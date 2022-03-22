@@ -162,8 +162,8 @@ function App() {
 
   const incrementMintAmount = () => {
     let newMintAmount = mintAmount + 1;
-    if (newMintAmount > 10) {
-      newMintAmount = 10;
+    if (newMintAmount > 5) {
+      newMintAmount = 5;
     }
     setMintAmount(newMintAmount);
   };
@@ -205,7 +205,7 @@ function App() {
         <s.SpacerSmall />
         <ResponsiveWrapper flex={1} style={{ padding: 24 }} test>
           <s.Container flex={1} jc={"center"} ai={"center"}>
-            <StyledImg alt={"example"} src={"/config/images/example.gif"} />
+            <StyledImg alt={"burb"} src={"/config/images/burb.png"} />
           </s.Container>
           <s.SpacerLarge />
           <s.Container
@@ -274,7 +274,7 @@ function App() {
                 </s.TextDescription>
                 <s.SpacerSmall />
                 {blockchain.account === "" ||
-                blockchain.smartContract === null ? (
+                  blockchain.smartContract === null ? (
                   <s.Container ai={"center"} jc={"center"}>
                     <s.TextDescription
                       style={{
@@ -352,16 +352,24 @@ function App() {
                     </s.Container>
                     <s.SpacerSmall />
                     <s.Container ai={"center"} jc={"center"} fd={"row"}>
-                      <StyledButton
-                        disabled={claimingNft ? 1 : 0}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          claimNFTs();
-                          getData();
-                        }}
-                      >
-                        {claimingNft ? "BUSY" : "BUY"}
-                      </StyledButton>
+                      {data.ownedNumber > 4 ?
+                        <s.TextDescription
+                          style={{ textAlign: "center", color: "var(--accent-text)" }}
+                        >
+                          porca la madonna.
+                        </s.TextDescription>
+                        :
+                        <StyledButton
+                          disabled={claimingNft ? 1 : 0}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            claimNFTs();
+                            getData();
+                          }}
+                        >
+                          {claimingNft ? "BUSY" : "BUY"}
+                        </StyledButton>
+                      }
                     </s.Container>
                   </>
                 )}
@@ -372,8 +380,8 @@ function App() {
           <s.SpacerLarge />
           <s.Container flex={1} jc={"center"} ai={"center"}>
             <StyledImg
-              alt={"example"}
-              src={"/config/images/example.gif"}
+              alt={"burb"}
+              src={"/config/images/burb.png"}
               style={{ transform: "scaleX(-1)" }}
             />
           </s.Container>
